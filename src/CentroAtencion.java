@@ -25,21 +25,7 @@ public class CentroAtencion {
         this.solicitudesAtendidas = new ArrayList<>();
     }
 
-        // Método para registrar una persona
-        public void registrarPersona(Persona persona) {
-            // Verificamos si ya existe la persona por DNI en cualquiera de las listas
-            if (!personaYaRegistrada(persona)) {
-                personasRegistradas.add(persona);
-                if (persona instanceof PersonaPrioridad) {
-                    personasPrioridad.add(persona); // Si es una persona de prioridad, la agregamos a esa lista
-                } else {
-                    personasComunes.add(persona); // Si es común, la agregamos a la lista de comunes
-                }
-            }else{
-                System.out.println("Error: El DNI ya está registrado.");
-            }
-        }
-
+        // getter y setter
         public String getNombre() {
             return nombre;
         }
@@ -74,20 +60,39 @@ public class CentroAtencion {
         public void setPersonasPrioridad(ArrayList<Persona> personasPrioridad) {
             this.personasPrioridad = personasPrioridad;
         }
+        
+        public void setSolicitudesAtendidas(ArrayList<Solicitud> solicitudesAtendidas) {
+            this.solicitudesAtendidas = solicitudesAtendidas;
+        }
 
+        // /////////////////////////////////////////////////////////////////////////
+    // metodo para enviar la lista de solicitudes de manera invertida 
         public ArrayList<Solicitud> getSolicitudesAtendidas() {
             ArrayList<Solicitud> listaInvertida = new ArrayList<>();
 
+            
             for (int i = solicitudesAtendidas.size() - 1; i >= 0; i--) {
                 listaInvertida.add(solicitudesAtendidas.get(i));
             }
         
             return listaInvertida;
         }
+    
 
-        public void setSolicitudesAtendidas(ArrayList<Solicitud> solicitudesAtendidas) {
-            this.solicitudesAtendidas = solicitudesAtendidas;
+    // Método para registrar una persona
+    public void registrarPersona(Persona persona) {
+        // Verificamos si ya existe la persona por DNI en cualquiera de las listas
+        if (!personaYaRegistrada(persona)) {
+            personasRegistradas.add(persona);
+            if (persona instanceof PersonaPrioridad) {
+                personasPrioridad.add(persona); // Si es una persona de prioridad, la agregamos a esa lista
+            } else {
+                personasComunes.add(persona); // Si es común, la agregamos a la lista de comunes
+            }
+        }else{
+            System.out.println("Error: El DNI ya está registrado.");
         }
+    }
 
     // Método para verificar si la persona ya está registrada
     private boolean personaYaRegistrada(Persona persona) {
@@ -122,5 +127,7 @@ public class CentroAtencion {
             personasComunes.add(persona);
         }
     }
+
+   
     
 }

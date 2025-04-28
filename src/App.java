@@ -1,10 +1,12 @@
+
 public class App {
+
     public static void main(String[] args) throws Exception {
 
         // CentroAtencion centro = new CentroAtencion("Centro de Salud");
         CentroAtencion centro = new CentroAtencion("Centro de salud");
         System.out.println("Nombre del centro: " + centro.getNombre());
-
+ 
 
         // Crear personas
         Persona persona1 = new PersonaComun("Juan Pérez", 12345678);  // Persona común
@@ -13,7 +15,7 @@ public class App {
         Persona persona4 = new PersonaPrioridad("Pepe argento", 35202020); 
         
         
-        // Registrar personas en el centro de atención
+        // Registrar personas en el centro de atención - se registran 4 personas
         centro.registrarPersona(persona1);  //
         centro.registrarPersona(persona2);
         centro.registrarPersona(persona3);
@@ -39,5 +41,7 @@ public class App {
         // Mostrar las solicitudes en orden inverso
         System.out.println("Solicitudes atendidas en orden inverso:");
         System.out.println(centro.getSolicitudesAtendidas());
+
+        
     }
 }

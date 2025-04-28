@@ -9,7 +9,7 @@ public class Fecha implements Validable{
     private int mes;
     private int anio;
     private String mensajeError="";
-    boolean valido;
+    private boolean valido;
     
     public Fecha(int dia, int mes, int anio) {
         this.dia = dia;

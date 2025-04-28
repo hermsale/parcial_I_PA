@@ -60,6 +60,16 @@ public class Solicitud {
             tipoServicio, fechaSolicitud);
     }
 
+    public boolean isEmpty() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'isEmpty'");
+    }
+
+    public String getFecha() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'getFecha'");
+    }
+
     
 
 }

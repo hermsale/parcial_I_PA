@@ -20,8 +20,6 @@ public abstract class Persona {
         }
         this.nombre = nombre;
         this.dni = dni;
-        this.nombre = nombre;
-        this.dni = dni;
         this.solicitud = null; // Inicialmente no tiene solicitud asignada
     }
 
