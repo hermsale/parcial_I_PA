@@ -1,4 +1,4 @@
-public abstract class Persona {
+public abstract class Persona implements AsignarPrioridad{
 
 //     Existen dos tipos de personas que pueden registrarse: aquellas con prioridad (como
 // adultos mayores o personas con discapacidad) y personas comunes. Cada persona
@@ -6,27 +6,20 @@ public abstract class Persona {
 // único. Al momento de registrarse en el sistema, no se asigna ninguna solicitud; esta
 // será definida cuando la persona sea recibida para ser atendida.
 
-    private String nombre;
-    private int dni;
-    protected Solicitud solicitud; // Atributo para almacenar la solicitud
+    protected String nombre;
+    protected int dni;
+    // Atributo para almacenar la solicitud
 
     // Constructor
     public Persona(String nombre, int dni) {
-        if (nombre == null || nombre.isEmpty()) {
-            throw new IllegalArgumentException("El nombre completo no puede ser nulo ni vacío.");
-        }
-        if (dni <= 0) {
-            throw new IllegalArgumentException("El DNI debe ser positivo.");
-        }
-        this.nombre = nombre;
-        this.dni = dni;
-        this.nombre = nombre;
-        this.dni = dni;
-        this.solicitud = null; // Inicialmente no tiene solicitud asignada
+        // this.nombre = nombre;
+        // this.dni = dni;
+        setNombre(nombre);
+        setDni(dni);
     }
 
     // Métodos abstractos
-    public abstract void setSolicitud(Solicitud solicitud);
+    // public abstract void setSolicitud(Solicitud solicitud);
 
     // Otros métodos comunes para Persona
     public String getNombre() {
@@ -39,19 +32,18 @@ public abstract class Persona {
 
     public void setNombre(String nombre) {
         if (nombre == null || nombre.isEmpty()) {
-            throw new IllegalArgumentException("El nombre completo no puede ser nulo ni vacío.");
+            System.out.println("El nombre completo no puede ser nulo ni vacío.");
+        }else{
+            this.nombre = nombre;
         }
-        this.nombre = nombre;
     }
 
     public void setDni(int dni) {
         if (dni <= 0) {
-            throw new IllegalArgumentException("El DNI debe ser positivo.");
+            System.out.println("El DNI debe ser positivo.");
+        }else{
+            this.dni = dni;
         }
-        this.dni = dni;
     }
 
-    public Solicitud getSolicitud() {
-        return solicitud;
-    }
 }

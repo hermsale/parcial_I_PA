@@ -1,4 +1,4 @@
-public class Fecha implements Validable{
+public class Fecha{
     // y una fecha formada por día, mes y año.
     // la validacion se implementa por medio de una interfaz
     //  La fecha debe ser válida:
@@ -9,7 +9,7 @@ public class Fecha implements Validable{
     private int mes;
     private int anio;
     private String mensajeError="";
-    boolean valido;
+    private boolean valido;
     
     public Fecha(int dia, int mes, int anio) {
         this.dia = dia;
@@ -54,6 +54,10 @@ public class Fecha implements Validable{
     }
 
     public String toString() {
-        return dia + "/" + mes + "/" + anio;
+        if(mensajeError==""){
+            return dia + "/" + mes + "/" + anio;
+        }else{
+            return mensajeError;
+        }
     }
 }

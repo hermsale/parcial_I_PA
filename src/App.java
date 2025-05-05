@@ -2,7 +2,7 @@ public class App {
     public static void main(String[] args) throws Exception {
 
         // CentroAtencion centro = new CentroAtencion("Centro de Salud");
-        CentroAtencion centro = new CentroAtencion("Centro de salud");
+        CentroAtencion centro = new CentroAtencion("Centro de Atencion 3 de Febrero");
         System.out.println("Nombre del centro: " + centro.getNombre());
 
 
@@ -11,6 +11,8 @@ public class App {
         Persona persona2 = new PersonaPrioridad("Ana Gómez", 87654321);  // Persona prioritaria
         Persona persona3 = new PersonaPrioridad("Alejandro Herms", 35664987);  // Persona prioritaria
         Persona persona4 = new PersonaPrioridad("Pepe argento", 35202020); 
+        Persona persona5 = new PersonaPrioridad("", -35202020); // persona mal cargada - no la carga
+        Persona persona6 = new PersonaPrioridad("Jorge Ramirez", 35202020); // persona con dni duplicado
         
         
         // Registrar personas en el centro de atención
@@ -18,6 +20,8 @@ public class App {
         centro.registrarPersona(persona2);
         centro.registrarPersona(persona3);
         centro.registrarPersona(persona4);
+        centro.registrarPersona(persona5); // trato de cargarla y tira error 
+        centro.registrarPersona(persona6); // persona con dni duplicado
        
 
           // Crear solicitudes
@@ -26,18 +30,26 @@ public class App {
           Solicitud solicitud3 = new Solicitud(Servicio.RECLAMO,new Fecha(22, 10, 2012)); //  fecha mal cargada
           Solicitud solicitud4 = new Solicitud(Servicio.RECLAMO,new Fecha(22, 10, 2024)); 
 
-        // Recibir las solicitudes de las personas
-        centro.recibirPersona(persona1, false, solicitud1);  // Persona común
-        centro.recibirPersona(persona2, true, solicitud2);   // Persona prioritaria
-        centro.recibirPersona(persona3, true, solicitud3);   // persona con fecha mal cargada
-        centro.recibirPersona(persona3, false, solicitud4); // persona NO es prioritaria
+        // guardamos en un arraylist de solicitudes persona 
+        centro.cargarSolicitudPersona(persona1, solicitud1);  // Persona común
+        centro.cargarSolicitudPersona(persona2, solicitud2);   // Persona prioritaria
+        centro.cargarSolicitudPersona(persona3, solicitud3);   // persona con fecha mal cargada
+        centro.cargarSolicitudPersona(persona3, solicitud4); // persona NO es prioritaria
 
         // Mostrar estadísticas
-        System.out.println("Total de personas registradas: " + centro.getPersonasRegistradas().size());
-        System.out.println("Total de solicitudes atendidas: " + centro.getSolicitudesAtendidas().size());
+        System.out.println("\nTodas las personas registradas ");
+        centro.getPersonasRegistradas();
+        // System.out.println("Total de solicitudes atendidas: " + centro.getSolicitudesAtendidas().size());
+        // System.out.println("Orden de prioridad de atencion ");
+        // centro.mostrarListaPersonaOrdenPrioridad();
+
+
+        // muestro ordenado por prioridad las solicitudes y su afiliado
 
         // Mostrar las solicitudes en orden inverso
-        System.out.println("Solicitudes atendidas en orden inverso:");
-        System.out.println(centro.getSolicitudesAtendidas());
+        // System.out.println("Solicitudes atendidas en orden inverso:");
+
+        System.out.println("\nLista ordenada segun prioridad del afiliado y consulta");
+        centro.mostrarListaPersonaSolicitud();
     }
 }

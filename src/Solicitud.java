@@ -15,17 +15,11 @@ public class Solicitud {
 
     private Servicio tipoServicio; // Tipo de servicio solicitado
     private Fecha fechaSolicitud; // Instancia de Fecha, ya validada
-    private boolean fechaValida;
+   
 
     public Solicitud(Servicio tipoServicio, Fecha fechaSolicitud) {
         this.tipoServicio = tipoServicio;
         this.fechaSolicitud = fechaSolicitud;
-
-        this.fechaValida = fechaSolicitud.esValido();
-        // Verificar si la fecha es válida
-        if (!this.fechaValida) {
-            System.out.println("Fecha inválida: " + fechaSolicitud.getMensajeError());
-        }
     }
 
     // getter y setter
@@ -42,11 +36,8 @@ public class Solicitud {
     }
 
     public void setFechaSolicitud(Fecha fechaSolicitud) {
+        
         this.fechaSolicitud = fechaSolicitud;
-    }
-
-    public boolean esFechaValida() {
-        return fechaValida;
     }
 
     // metodo toString 

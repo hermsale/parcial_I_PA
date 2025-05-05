@@ -1,5 +1,5 @@
-public class PersonaPrioridad extends Persona{
-    
+public class PersonaPrioridad extends Persona {
+
     // Constructor
     public PersonaPrioridad(String nombre, int dni) {
         super(nombre, dni);
@@ -7,7 +7,12 @@ public class PersonaPrioridad extends Persona{
 
     // Implementación del método setSolicitud en la clase concreta
     @Override
-    public void setSolicitud(Solicitud solicitud) {
-        this.solicitud = solicitud; // Asigna la solicitud
+    public boolean tienePrioridad() {
+        return true;
     }
+
+    public String toString() {
+        return "Nombre: "+nombre+" dni: "+dni;
+    }
+
 }

@@ -5,9 +5,16 @@ public class PersonaComun extends Persona{
         super(nombre, dni);
     }
 
-    // Implementación del método setSolicitud en la clase concreta
+    // Implementación de la interface AsignarPrioridad
     @Override
-    public void setSolicitud(Solicitud solicitud) {
-        this.solicitud = solicitud; // Asigna la solicitud
+    public boolean tienePrioridad() {
+        return false;
     }
+
+    @Override
+    public String toString() {
+        return "Nombre: "+nombre+" dni: "+dni;
+    }
+
+    
 }
