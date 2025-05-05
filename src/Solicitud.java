@@ -50,7 +50,4 @@ public class Solicitud {
             "-------------------------\n", 
             tipoServicio, fechaSolicitud);
     }
-
-    
-
 }

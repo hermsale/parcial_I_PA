@@ -13,17 +13,12 @@ public class CentroAtencion {
 
     // guardo todas las personas registradas
     private List<Persona> personasRegistradas = new ArrayList<>();
-    // guardo por orden de prioridad
-    // private List<Persona> ordenPrioridad = new ArrayList<>();
 
     // creo una lista para guardar las consultas y los usuarios
     private List<Atencion> solicitudPersona = new ArrayList<>();
-    // esta lista esta ordenada segun la persona y la solicitud
+
+    // esta lista esta ordenada segun la persona y la solicitud - ATENCION: PERSONA Y SOLICITUD
     private List<Atencion> ordenPrioridadSolicitudPersona = new ArrayList<>();
-
-    // private ArrayList<Solicitud> solicitudesAtendidas;
-
-    // lista que contendra el orden de prioridad - contiene primero los prioritarios y despues los comunes
 
     // metodo constructor
     public CentroAtencion(String nombre) {
@@ -42,7 +37,7 @@ public class CentroAtencion {
             }
     }
 
-        // Método para registrar una persona
+    // Método para registrar una persona - VALIDA SI YA EXISTE EL DNI Y SI EL NOMBRE ES CORRECTO
     public void registrarPersona(Persona persona) {
         if ((persona.nombre == null || persona.nombre.isEmpty())||persona.dni<0){
             System.out.println("Persona no registrada: datos invalidos");
@@ -69,64 +64,49 @@ public class CentroAtencion {
     // metodo para visualizar todas las personas registradas
     public void getPersonasRegistradas(){
         int i=0;
+        System.out.println("Cantidad de personas registradas: "+personasRegistradas.size());
+        System.out.println("Listado:");
         while(i<personasRegistradas.size()){
             System.out.println(personasRegistradas.get(i));
             i++;
         }
+
     }
-
-    // public void mostrarListaPersonaOrdenPrioridad(){
-    //     int i=0;
-    //     // llamo al metodo para ordenar por orden de prioridad
-    //     getOrdenDePrioridad();
-    //     while(i<ordenPrioridad.size()){
-    //         System.out.println(ordenPrioridad.get(i));
-    //         i++;
-    //     }
-    // }
-
-    // metodo para ordenar por orden de prioridad
-    // public void getOrdenDePrioridad(){
-    //     int i=0;
-    //     while(i<personasRegistradas.size()){
-    //         // primero agregamos a los de prioridad true
-    //         // si tienePrioridad es true entonces agrega
-    //         if(personasRegistradas.get(i).tienePrioridad()){
-    //             ordenPrioridad.add(personasRegistradas.get(i)); // agrego a esa persona primero
-    //         }
-    //         i++;
-    //     }
-    //     i=0;
-    //     while(i<personasRegistradas.size()){
-    //         if(personasRegistradas.get(i).tienePrioridad()==false){
-    //             ordenPrioridad.add(personasRegistradas.get(i)); // agrego a esa persona comun
-    //         }
-    //         i++;
-    //     }
-    // }
-
-    // recibo a persona y solicitud. analizo si tiene prioridad 
-    // public void atenderSolicitud(Persona persona, Solicitud solicitud){
-    //     getOrdenDePrioridad(); 
-    //     int i=0;
-    //     while(i<ordenPrioridad.size()){
-    //         if(persona.dni==ordenPrioridad.get(i).dni){
-    //             System.out.println("Se atendio la consulta "+solicitud+" al cliente "+persona.nombre);
-    //         }
-    //         i++;
-    //     }
-    // }
 
     // se recibe y se guardan todas las solicitudes de cada persona
     public void cargarSolicitudPersona(Persona persona, Solicitud solicitud){
         // creo una instancia de Atencion y lo guardo en un arrayList de ese tipo
         Atencion nuevaSolicitud = new Atencion(persona, solicitud);
-        solicitudPersona.add(nuevaSolicitud);
+        // verificamos la fecha
+        if(verificarFecha(solicitud.getFechaSolicitud())){
+            solicitudPersona.add(nuevaSolicitud);
+        }else{
+            System.out.println("La fecha ingresada es incorrecta");
+        }
+    }
+
+    public boolean verificarFecha(Fecha solicitud){
+
+        if(solicitud.getAnio()<2020 || solicitud.getAnio()>2025){
+            return false;
+        }
+
+        if(solicitud.getMes()<1 || solicitud.getMes()>12){
+            return false;
+        }
+
+        if(solicitud.getDia()<1 || solicitud.getDia()>31){
+            return false;
+        }
+
+        return true;
     }
 
     // ordena solicitudPersona contiene todas las solicitudes y las personas. ordenPrioridadSolicitudPersona es la lista ordenada de estas solicitudes
     public void getOrdenDePrioridadSolicitud(){
         int i=0;
+        System.out.println("Cantidad de solicitudes atendidas: "+solicitudPersona.size());
+        System.out.println("Listado de solicitudes atendidas: ");
         while(i<solicitudPersona.size()){
             // primero agregamos a los de prioridad true
             // si tienePrioridad es true entonces agrega
@@ -143,15 +123,24 @@ public class CentroAtencion {
             i++;
         }
     }
-
     
     public void mostrarListaPersonaSolicitud(){
         int i=0;
         // llamo al metodo para ordenar por orden de prioridad
         getOrdenDePrioridadSolicitud();
+        // una vez ordenado por orden de prioridad. muestro la solicitud y el cliente
         while(i<ordenPrioridadSolicitudPersona.size()){
             System.out.println(ordenPrioridadSolicitudPersona.get(i));
             i++;
         }
     }
+
+    public void mostrarListaPersonaSolicitudInverso() {                
+        // Recorro la lista desde el último elemento hasta el primero 
+        // cargo el orden de prioridad ya ordenado, pero lo muestro invertido
+        for (int i = ordenPrioridadSolicitudPersona.size() - 1; i >= 0; i--) {
+            System.out.println(ordenPrioridadSolicitudPersona.get(i));
+        }
+    }
+    
 }
