@@ -6,7 +6,7 @@ public class App {
         // CentroAtencion centro = new CentroAtencion("Centro de Salud");
         CentroAtencion centro = new CentroAtencion("Centro de Atencion 3 de Febrero");
         System.out.println("Nombre del centro: " + centro.getNombre());
- 
+
 
         // Crear personas
         Persona persona1 = new PersonaComun("Juan Pérez", 12345678);  // Persona común

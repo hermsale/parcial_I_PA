@@ -27,7 +27,7 @@ public class Solicitud {
         return tipoServicio;
     }
 
-    public void setTipoServicio(Servicio tipoServicio) {
+    private void setTipoServicio(Servicio tipoServicio) {
         this.tipoServicio = tipoServicio;
     }
 
@@ -35,7 +35,7 @@ public class Solicitud {
         return fechaSolicitud;
     }
 
-    public void setFechaSolicitud(Fecha fechaSolicitud) {
+    private void setFechaSolicitud(Fecha fechaSolicitud) {
         
         this.fechaSolicitud = fechaSolicitud;
     }

@@ -11,10 +11,9 @@ public class PersonaComun extends Persona{
         return false;
     }
 
+    // el padre al tener el metodo privado, se tiene que obtener los datos por el metodo get  
     @Override
     public String toString() {
-        return "Nombre: "+nombre+" dni: "+dni;
+        return "Nombre: "+getNombre()+" dni: "+getDni();
     }
-
-    
 }

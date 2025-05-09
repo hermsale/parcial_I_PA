@@ -12,7 +12,7 @@ public class PersonaPrioridad extends Persona {
     }
 
     public String toString() {
-        return "Nombre: "+nombre+" dni: "+dni;
+        return "Nombre: "+getNombre()+" dni: "+getDni();
     }
 
 }

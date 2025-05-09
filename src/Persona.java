@@ -6,8 +6,8 @@ public abstract class Persona implements AsignarPrioridad{
 // único. Al momento de registrarse en el sistema, no se asigna ninguna solicitud; esta
 // será definida cuando la persona sea recibida para ser atendida.
 
-    protected String nombre;
-    protected int dni;
+    private String nombre;
+    private int dni;
     // Atributo para almacenar la solicitud
 
     // Constructor
@@ -30,7 +30,7 @@ public abstract class Persona implements AsignarPrioridad{
         return dni;
     }
 
-    public void setNombre(String nombre) {
+    private void setNombre(String nombre) {
         if (nombre == null || nombre.isEmpty()) {
             System.out.println("El nombre completo no puede ser nulo ni vacío.");
         }else{
@@ -38,7 +38,7 @@ public abstract class Persona implements AsignarPrioridad{
         }
     }
 
-    public void setDni(int dni) {
+    private void setDni(int dni) {
         if (dni <= 0) {
             System.out.println("El DNI debe ser positivo.");
         }else{

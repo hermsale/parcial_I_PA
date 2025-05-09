@@ -11,7 +11,7 @@ public class Atencion {
         return persona;
     }
 
-    public void setPersona(Persona persona) {
+    private void setPersona(Persona persona) {
         this.persona = persona;
     }
 
@@ -19,7 +19,7 @@ public class Atencion {
         return solicitud;
     }
 
-    public void setSolicitud(Solicitud solicitud) {
+    private void setSolicitud(Solicitud solicitud) {
         this.solicitud = solicitud;
     }
 

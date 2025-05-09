@@ -25,7 +25,7 @@ public class Fecha{
 
 
 
-    public void setDia(int dia) {
+    private void setDia(int dia) {
         this.dia = dia;
     }
 
@@ -37,7 +37,7 @@ public class Fecha{
 
 
 
-    public void setMes(int mes) {
+    private void setMes(int mes) {
         this.mes = mes;
     }
 
@@ -49,7 +49,7 @@ public class Fecha{
 
 
 
-    public void setAnio(int anio) {
+    private void setAnio(int anio) {
         this.anio = anio;
     }
 

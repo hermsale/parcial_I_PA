@@ -29,7 +29,7 @@ public class CentroAtencion {
             return nombre;
         }
 
-    public void setNombre(String nombre) {
+    private void setNombre(String nombre) {
             if (nombre == null || nombre.isEmpty()) {
                 throw new IllegalArgumentException("El nombre del centro no puede ser nulo ni vacío.");
             }else{
@@ -39,7 +39,7 @@ public class CentroAtencion {
 
     // Método para registrar una persona - VALIDA SI YA EXISTE EL DNI Y SI EL NOMBRE ES CORRECTO
     public void registrarPersona(Persona persona) {
-        if ((persona.nombre == null || persona.nombre.isEmpty())||persona.dni<0){
+        if ((persona.getNombre() == null || persona.getNombre().isEmpty())||persona.getDni()<0){
             System.out.println("Persona no registrada: datos invalidos");
         }else{
             if(verificarDNIRepetido(persona)){
@@ -52,13 +52,15 @@ public class CentroAtencion {
 
     public boolean verificarDNIRepetido(Persona persona){
         int i=0;
+        boolean encuentra=true;
         while(i<personasRegistradas.size()){
             if(personasRegistradas.get(i).getDni()==persona.getDni()){
-                return false; // si encuentra un dni duplicado envia un false
+                encuentra=false; // si encuentra un dni duplicado envia un false
             }
             i++;
         }
-        return true; // si no encuentra un dni duplicado envia un true
+        // realizo un solo retorno, por buenas practicas 
+        return encuentra; // si no encuentra un dni duplicado envia un true
     }
 
     // metodo para visualizar todas las personas registradas
@@ -70,7 +72,6 @@ public class CentroAtencion {
             System.out.println(personasRegistradas.get(i));
             i++;
         }
-
     }
 
     // se recibe y se guardan todas las solicitudes de cada persona
@@ -85,6 +86,7 @@ public class CentroAtencion {
         }
     }
 
+    // corregir los return , tener 1 solo
     public boolean verificarFecha(Fecha solicitud){
 
         if(solicitud.getAnio()<2020 || solicitud.getAnio()>2025){
